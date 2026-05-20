@@ -1,0 +1,15 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <section class="panel">
+    <form class="audit-form" data-audit-form>
+      <label class="field">
+        <span class="field__label">Target URL</span>
+        <span class="input-row">
+          <input class="input" name="url" type="url" placeholder="https://example.com" required>
+          <button class="button" type="submit">Run audit</button>
+        </span>
+      </label>
+    </form>
+  </section>
+{% endblock %}

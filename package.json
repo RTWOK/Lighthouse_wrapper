@@ -1,8 +1,24 @@
 {
+  "type": "module",
   "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass assets/scss/Main.scss app/public/css/app.css --no-source-map",
+    "build:js": "esbuild assets/js/Main.js --bundle --format=esm --outfile=app/public/js/app.js",
+    "watch:css": "sass --watch assets/scss/Main.scss:app/public/css/app.css --no-source-map",
+    "watch:js": "esbuild assets/js/Main.js --bundle --format=esm --outfile=app/public/js/app.js --watch",
     "lighthouse": "lighthouse"
   },
   "dependencies": {
-    "lighthouse": "^12.8.2"
+    "@fastify/static": "^8.3.0",
+    "@fastify/view": "^11.1.1",
+    "fastify": "^5.8.5",
+    "lighthouse": "^12.8.2",
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "sass": "^1.94.2"
   }
 }
