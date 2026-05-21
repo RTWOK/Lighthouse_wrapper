@@ -4,6 +4,7 @@ import Fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import fastifyView from "@fastify/view";
 import nunjucks from "nunjucks";
+import routes from "./routes";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +25,8 @@ app.register(fastifyView, {
   },
   root: path.join(rootDir, "app", "views")
 });
+
+app.register(routes);
 
 app.get("/", async (request, reply) => {
   return reply.view("pages/index.njk", {
