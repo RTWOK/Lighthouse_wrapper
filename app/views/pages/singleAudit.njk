@@ -1,0 +1,22 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <section class="panel">
+    <div class="report-list">
+      {% for report in reports %}
+        <details class="report-item" open>
+          <summary class="report-item__summary">
+            <span class="report-item__title">Lighthouse report</span>
+            <span class="report-item__url">{{ report.url }}</span>
+          </summary>
+          <iframe
+            class="report-frame"
+            title="Lighthouse report for {{ report.url }}"
+            srcdoc="{{ report.html | escape }}"
+            sandbox="allow-scripts allow-same-origin"
+          ></iframe>
+        </details>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

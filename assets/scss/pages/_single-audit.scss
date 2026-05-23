@@ -1,0 +1,49 @@
+.report-list {
+    display: grid;
+    gap: 16px;
+}
+
+.report-item {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    background: var(--color-report-soft);
+}
+
+.report-item{
+    &__summary {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: center;
+        padding: 16px 20px;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-weight: 500;
+    }
+
+    &__url {
+        min-width: 0;
+        overflow: hidden;
+        color: var(--color-muted);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.report-frame {
+    display: block;
+    width: 100%;
+    height: min(76vh, 900px);
+    border: 0;
+    border-top: 1px solid var(--color-line);
+    background: #fff;
+}
+
+@media (max-width: 640px) {
+    .report-item__summary {
+        grid-template-columns: 1fr;
+    }
+}

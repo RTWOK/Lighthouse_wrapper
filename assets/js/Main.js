@@ -1,4 +1,5 @@
 const form = document.querySelector("[data-audit-form]");
+console.log('hello world!');
 
 if (form) {
     form.addEventListener("submit", () => {

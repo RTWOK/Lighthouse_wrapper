@@ -1,0 +1,9 @@
+.audit-form {
+    display: grid;
+    gap: 16px;
+}
+
+.audit-form.is-loading .button {
+    opacity: 0.72;
+    cursor: wait;
+}

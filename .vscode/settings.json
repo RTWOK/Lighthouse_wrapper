@@ -3,6 +3,6 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "files.associations": {
-        "*.njk": "html"
+        "*.njk": "nunjucks"
     }
 }
