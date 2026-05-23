@@ -1,0 +1,70 @@
+<form class="debug-modal-form" data-modal-debug-form>
+  <div class="debug-modal-form__header">
+    <h2 class="debug-modal-form__title">Modal debug</h2>
+    <p class="debug-modal-form__description">Create test modal data without submitting the page.</p>
+  </div>
+
+  <div class="debug-modal-form__grid">
+    <label class="field">
+      <span class="field__label">Container overline</span>
+      <input class="input" name="overline" type="text" value="Audit status">
+    </label>
+
+    <label class="field">
+      <span class="field__label">Container title</span>
+      <input class="input" name="containerTitle" type="text" value="1 audit could not run">
+    </label>
+
+    <label class="field">
+      <span class="field__label">Footer</span>
+      <input class="input" name="footer" type="text" value="Generated from debug form data">
+    </label>
+  </div>
+
+  <div class="debug-modal-form__children" data-modal-debug-children></div>
+
+  <div class="debug-modal-form__actions">
+    <button class="button button--secondary" type="button" data-modal-debug-add-child>Add child</button>
+    <button class="button debug-modal-form__button" type="submit">Debug modal press</button>
+  </div>
+
+  <template data-modal-debug-child-template>
+    <fieldset class="debug-modal-child" data-modal-debug-child>
+      <legend class="debug-modal-child__legend">Modal child</legend>
+      <button class="debug-modal-child__remove" type="button" aria-label="Remove modal child" data-modal-debug-remove-child>
+        &times;
+      </button>
+
+      <div class="debug-modal-child__grid">
+        <label class="field">
+          <span class="field__label">Card type</span>
+          <select class="input" name="type">
+            <option value="info">Info</option>
+            <option value="warning" selected>Warning</option>
+            <option value="error">Error</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Card title</span>
+          <input class="input" name="title" type="text" value="Largest Contentful Paint">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Lifetime in ms</span>
+          <input class="input" name="lifetime" type="number" min="0" step="500" value="5000">
+        </label>
+
+        <label class="field debug-modal-child__wide">
+          <span class="field__label">Message</span>
+          <textarea class="input debug-modal-child__textarea" name="message">Reason: page navigation was interrupted by an interstitial response.</textarea>
+        </label>
+
+        <label class="field debug-modal-child__wide">
+          <span class="field__label">Tags comma separated</span>
+          <input class="input" name="tags" type="text" value="Performance, Mobile, Needs retry">
+        </label>
+      </div>
+    </fieldset>
+  </template>
+</form>

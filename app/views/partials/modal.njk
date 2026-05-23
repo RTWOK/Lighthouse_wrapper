@@ -1,4 +1,24 @@
-<div class="modal-parent">
-    
-    I AM A MODAL IDIOT!
+<div class="modal" data-modal>
+    <section class="modal__container" aria-labelledby="modal-title">
+        <header class="modal__header">
+            <div>
+                <p class="modal__overline">{{ modal.overline | default('Audit status') }}</p>
+                <h2 class="modal__title" id="modal-title">{{ modal.title | default('No audit status yet') }}</h2>
+            </div>
+            <button class="modal__close" type="button" aria-label="Close audit status" data-modal-close>
+                &times;
+            </button>
+        </header>
+
+        <div class="modal__body" data-modal-grid>
+            {% for modalChild in modal.children | default([]) %}
+                {% include "partials/modal-card.njk" %}
+            {% endfor %}
+        </div>
+
+        <footer class="modal__footer">
+            <span>{{ modal.footer | default('Generated from the latest Lighthouse pass') }}</span>
+            <button class="modal__details" type="button">View details</button>
+        </footer>
+    </section>
 </div>

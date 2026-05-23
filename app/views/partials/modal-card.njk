@@ -1,0 +1,15 @@
+<article class="modal-card modal-card--{{ modalChild.type | default('info') }}">
+    <div class="modal-card__status" aria-hidden="true"></div>
+    <div class="modal-card__content">
+        <h3 class="modal-card__title">{{ modalChild.title }}</h3>
+        <p class="modal-card__message">{{ modalChild.message }}</p>
+
+        {% if modalChild.tags %}
+            <div class="modal-card__tags">
+                {% for tag in modalChild.tags %}
+                    <span class="modal-card__tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</article>

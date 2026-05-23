@@ -15,5 +15,8 @@
             </main>
         </div>
         {% include "partials/modal.njk" %}
+        {% if debug %}
+            {% include "partials/debug-modal-tool.njk" %}
+        {% endif %}
     </body>
 </html>

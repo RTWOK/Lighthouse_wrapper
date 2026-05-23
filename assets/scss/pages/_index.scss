@@ -7,3 +7,123 @@
     opacity: 0.72;
     cursor: wait;
 }
+
+.debug-modal-form {
+    display: grid;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-line);
+
+    &__header {
+        display: grid;
+        gap: 4px;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    &__description {
+        margin: 0;
+        color: var(--color-muted);
+        line-height: 1.5;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    &__wide {
+        grid-column: 1 / -1;
+    }
+
+    &__children {
+        display: grid;
+        gap: 12px;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &__button {
+        min-height: 42px;
+    }
+}
+
+.debug-modal-child {
+    position: relative;
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 18px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+
+    &__legend {
+        padding: 0 6px;
+        color: var(--color-muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    &__remove {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        display: inline-grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--color-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: 1.35rem;
+        line-height: 1;
+    }
+
+    &__remove:hover {
+        background: #f1f3f4;
+        color: var(--color-text);
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    &__wide {
+        grid-column: 1 / -1;
+    }
+
+    &__textarea {
+        min-height: 88px;
+        resize: vertical;
+    }
+}
+
+@media (max-width: 760px) {
+    .debug-modal-form {
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .debug-modal-child {
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

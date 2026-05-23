@@ -6,6 +6,7 @@
         "build": "npm run build:css && npm run build:js",
         "build:css": "sass assets/scss/Main.scss app/public/css/app.css --no-source-map",
         "build:js": "esbuild assets/js/Main.js --bundle --format=esm --outfile=app/public/js/app.js",
+        "watch": "node scripts/watch-assets.js",
         "watch:css": "sass --watch assets/scss/Main.scss:app/public/css/app.css --no-source-map",
         "watch:js": "esbuild assets/js/Main.js --bundle --format=esm --outfile=app/public/js/app.js --watch",
         "lighthouse": "lighthouse"
