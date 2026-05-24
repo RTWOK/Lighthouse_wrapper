@@ -2,11 +2,12 @@
 
 {% block content %}
   <section class="panel">
-    <form class="audit-form" data-audit-form method="post" action="./singleAudit" target="_self">
+    <form class="audit-form" data-audit-form method="post" action="./audits" target="_self">
       <label class="field">
         <span class="field__label">Target URL</span>
         <span class="input-row">
-          <input class="input" name="url" type="url" placeholder="https://example.com" required>
+          <input class="input" name="url" type="url" placeholder="https://example.com">
+          <textarea class="input" name="urls" placeholder="https://example.com" wrap="soft"></textarea>
           <button class="button" type="submit">Run audit</button>
         </span>
       </label>

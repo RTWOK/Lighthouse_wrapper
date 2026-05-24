@@ -1,5 +1,5 @@
 import { Modal, ModalChild } from '../../../shared/classes/Modal.js';
-import { callModal } from '../Api/ModalApi.js';
+import { callModal } from '../Client/ModalClient.js';
 
 export default function debugModalTool() {
     const modalDebugForm = document.querySelector("[data-modal-debug-form]");

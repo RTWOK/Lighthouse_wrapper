@@ -1,7 +1,7 @@
 import configuration from './Debug/Configuration.js';
 import debugModalTool from './Debug/DebugModalTool.js';
 import { Modal, ModalChild } from '../../shared/classes/Modal.js';
-import { callModal } from './Api/ModalApi.js';
+import { callModal } from './Client/ModalClient.js';
 
 if (configuration.debug) {
     debugModalTool();

@@ -7,7 +7,7 @@ const configuration = {
     },
     lighthouse: {
         logLevel: 'info',
-        output: 'html',
+        output: 'json',
         onlyCategories: [
             'performance'
         ]
