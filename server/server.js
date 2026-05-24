@@ -12,7 +12,7 @@ const rootDir = path.resolve(__dirname, "..");
 
 export async function createServer() {
     const app = Fastify({
-        logger: true
+        logger: false
     });
 
     app.register(fastifyStatic, {

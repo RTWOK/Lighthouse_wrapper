@@ -10,7 +10,7 @@ if (configuration.debug) {
 const form = document.querySelector("[data-audit-form]");
 
 if (form) {
-    form.addEventListener("submit", async (event) => {
+    form.addEventListener("submit" , async (event) => {
         event.preventDefault();
 
         form.classList.add("is-loading");

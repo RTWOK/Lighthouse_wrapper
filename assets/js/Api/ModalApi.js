@@ -1,21 +1,20 @@
-import { Modal } from '../../../shared/classes/Modal.js';
+import { Modal } from '../../../shared/classes/Modal.js' 
 
 export async function callModal(modal = new Modal(), ...modalChildren) {
-    const newModal = await fetch('/modal', {
+    const modalContainer = document.querySelector('#modal[data-modal]');
+
+    const modalResponse = await fetch('./modal', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             currentModal: modal,
-            modalChildren,
-            event: {
-                type: 'audit-started'
-            }
+            modalChildren
         })
     });
 
-    const modalHtml = await newModal.text();
+    const modalHtml = await modalResponse.text();
 
-    document.querySelector('[data-modal]').outerHTML = modalHtml;
+    modalContainer.outerHTML = modalHtml;
 }

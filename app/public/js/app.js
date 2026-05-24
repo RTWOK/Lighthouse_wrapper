@@ -137,21 +137,19 @@ var ModalChild = class extends ModalBase {
 
 // assets/js/Api/ModalApi.js
 async function callModal(modal = new Modal(), ...modalChildren) {
-  const newModal = await fetch("/modal", {
+  const modalContainer = document.querySelector("#modal[data-modal]");
+  const modalResponse = await fetch("./modal", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
       currentModal: modal,
-      modalChildren,
-      event: {
-        type: "audit-started"
-      }
+      modalChildren
     })
   });
-  const modalHtml = await newModal.text();
-  document.querySelector("[data-modal]").outerHTML = modalHtml;
+  const modalHtml = await modalResponse.text();
+  modalContainer.outerHTML = modalHtml;
 }
 
 // assets/js/Debug/DebugModalTool.js

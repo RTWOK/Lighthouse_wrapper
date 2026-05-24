@@ -8,6 +8,8 @@ export default async function routesModal(app) {
     });
 
     app.post('/modal', async (request, reply) => {
+        console.log(request.body.currentModal)
+
         const modal = new Modal(request.body.currentModal);
         const modalChildren = request.body.modalChildren || [];
 
