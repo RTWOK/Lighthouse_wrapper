@@ -14,7 +14,7 @@ export default async function routesAudits(app) {
             .split(/\r?\n/)
             .map(url => url.trim())
             .filter(Boolean);
-
+            
         return reply.view('pages/audits.njk', {
             title: 'Audit report',
             urls: urls,
