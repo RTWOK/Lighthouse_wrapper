@@ -4,6 +4,8 @@
         <script src="/js/audits.js" type="module" defer></script>
 {% endblock %}
 {% block content %}
+    <div>{{garbage}}</div>
+    <div data-urls="{{urls}}"></div>
     <ul>
     {% for url in urls %}
         <li>

@@ -12,8 +12,10 @@ const rootDir = path.resolve(__dirname, "..");
 
 export async function createServer() {
     const app = Fastify({
-        logger: false
+        logger: false,
     });
+
+    app.decorate('jobs', new Map())
 
     app.register(fastifyStatic, {
         root: path.join(rootDir, "app", "public"),

@@ -1,10 +1,11 @@
 export class Queue {
     #urls;
-    #index
+    #index;
+    #results;
 
     constructor(urls = []){
         this.urls = urls;
-        this.index = 0;
+        this.#results = [];
     }
 
     set urls(value) {
@@ -19,8 +20,16 @@ export class Queue {
         return this.#index;
     }
 
+    get results() {
+        return this.#results;
+    }
+
     reset() {
         this.#index = 0;
+    }
+
+    pushResult(url, result) {
+        this.#results.push({url, result})
     }
 
     claimNext() {

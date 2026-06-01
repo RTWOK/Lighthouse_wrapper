@@ -1,5 +1,5 @@
 import lighthouse from "lighthouse";
-import runLighthouseAudit from "../../server/lighthouse/lighthouse";
+import runLighthouseAudit from "../../server/lighthouse/lighthouse.js";
 
 export class Worker {
     #queue
@@ -20,7 +20,8 @@ export class Worker {
         return runLighthouseAudit(url);
     }
 
-    work() {
+    async work() {
+        this.queue.reset();
         let jobAvailable = true;
 
         while (jobAvailable) {
@@ -29,7 +30,8 @@ export class Worker {
             if (currentJob === null) {
                 jobAvailable = false;
             } else {
-                this.runLighthouse(currentJob);
+                const result = await this.runLighthouse(currentJob);
+                this.#queue.pushResult(currentJob, result);
             }
         }
     }
