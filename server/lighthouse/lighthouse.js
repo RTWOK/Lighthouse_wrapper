@@ -10,8 +10,6 @@ export default async function runLighthouseAudit(url) {
         port: chrome.port
     };
 
-    console.log("I am working lol");
-
     const runnerResult = await lighthouse(url, options);
     await chrome.kill();
 

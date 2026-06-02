@@ -1,11 +1,16 @@
-export class Queue {
+import { Identifiable } from "./Identifiable.js"
+
+export class Queue extends Identifiable {
     #urls;
     #index;
     #results;
 
     constructor(urls = []){
+        super();
+
         this.urls = urls;
         this.#results = [];
+        this.#index = 0
     }
 
     set urls(value) {

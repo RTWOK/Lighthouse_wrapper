@@ -1,6 +1,6 @@
 const configuration = {
     chrome: {
-        port: 9222,
+        port: 0,
         chromeFlags: [
             '--headless'
         ]
@@ -11,6 +11,9 @@ const configuration = {
         onlyCategories: [
             'performance'
         ]
+    },
+    workers: {
+        amount: 1, //Implement forking for parallel workers
     }
 };
 

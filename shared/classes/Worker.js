@@ -1,10 +1,13 @@
+import { Identifiable } from "./Identifiable.js";
 import lighthouse from "lighthouse";
 import runLighthouseAudit from "../../server/lighthouse/lighthouse.js";
 
-export class Worker {
+export class Worker extends Identifiable {
     #queue
 
     constructor(queue) {
+        super();
+
         this.queue = queue;
     }
 
@@ -21,7 +24,6 @@ export class Worker {
     }
 
     async work() {
-        this.queue.reset();
         let jobAvailable = true;
 
         while (jobAvailable) {
@@ -34,5 +36,7 @@ export class Worker {
                 this.#queue.pushResult(currentJob, result);
             }
         }
+
+        return true; //Peephole for debugging
     }
 }
