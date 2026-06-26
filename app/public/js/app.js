@@ -4,16 +4,23 @@ var configuration = {
 };
 var Configuration_default = configuration;
 
-// shared/classes/Modal.js
-var ModalBase = class {
+// shared/classes/Identifiable.js
+var Identifiable = class {
+  #id;
   constructor() {
-    this._id = crypto.randomUUID();
+    this.#id = crypto.randomUUID();
   }
   get id() {
-    return this._id;
+    return this.#id;
   }
 };
-var Modal = class extends ModalBase {
+
+// shared/classes/Modal.js
+var Modal = class extends Identifiable {
+  #overline;
+  #title;
+  #footer;
+  #children;
   constructor({
     overline = "",
     title = "",
@@ -27,40 +34,40 @@ var Modal = class extends ModalBase {
     this.children = children;
   }
   set overline(value) {
-    this._overline = String(value || "").trim();
+    this.#overline = String(value || "").trim();
   }
   get overline() {
-    return this._overline;
+    return this.#overline;
   }
   set title(value) {
-    this._title = String(value || "").trim();
+    this.#title = String(value || "").trim();
   }
   get title() {
-    return this._title;
+    return this.#title;
   }
   set footer(value) {
-    this._footer = String(value || "").trim();
+    this.#footer = String(value || "").trim();
   }
   get footer() {
-    return this._footer;
+    return this.#footer;
   }
   set children(value) {
-    this._children = Array.isArray(value) ? value.map((child) => child instanceof ModalChild ? child : new ModalChild(child)) : [];
+    this.#children = Array.isArray(value) ? value.map((child) => child instanceof ModalChild ? child : new ModalChild(child)) : [];
   }
   get children() {
-    return this._children;
+    return this.#children;
   }
   addChild(child) {
-    this._children.push(child instanceof ModalChild ? child : new ModalChild(child));
+    this.#children.push(child instanceof ModalChild ? child : new ModalChild(child));
     return this;
   }
   removeChild(child) {
     if (Number.isInteger(child)) {
-      this._children.splice(child, 1);
+      this.#children.splice(child, 1);
       return this;
     }
     const childId = child instanceof ModalChild ? child.id : String(child || "").trim();
-    this._children = this._children.filter((currentChild) => {
+    this.#children = this.#children.filter((currentChild) => {
       return currentChild !== child && currentChild.id !== childId;
     });
     return this;
@@ -75,7 +82,12 @@ var Modal = class extends ModalBase {
     };
   }
 };
-var ModalChild = class extends ModalBase {
+var ModalChild = class extends Identifiable {
+  #type;
+  #title;
+  #message;
+  #lifetime;
+  #tags;
   constructor({
     type = "info",
     title = "",
@@ -93,35 +105,35 @@ var ModalChild = class extends ModalBase {
   set type(value) {
     const allowedTypes = ["info", "warning", "error"];
     const nextType = String(value || "").trim();
-    this._type = allowedTypes.includes(nextType) ? nextType : "info";
+    this.#type = allowedTypes.includes(nextType) ? nextType : "info";
   }
   get type() {
-    return this._type;
+    return this.#type;
   }
   set title(value) {
-    this._title = String(value || "").trim();
+    this.#title = String(value || "").trim();
   }
   get title() {
-    return this._title;
+    return this.#title;
   }
   set message(value) {
-    this._message = String(value || "").trim();
+    this.#message = String(value || "").trim();
   }
   get message() {
-    return this._message;
+    return this.#message;
   }
   set lifetime(value) {
     const nextLifetime = Number(value);
-    this._lifetime = Number.isFinite(nextLifetime) && nextLifetime >= 0 ? nextLifetime : 0;
+    this.#lifetime = Number.isFinite(nextLifetime) && nextLifetime >= 0 ? nextLifetime : 0;
   }
   get lifetime() {
-    return this._lifetime;
+    return this.#lifetime;
   }
   set tags(value) {
-    this._tags = Array.isArray(value) ? value.map((tag) => String(tag).trim()).filter(Boolean) : [];
+    this.#tags = Array.isArray(value) ? value.map((tag) => String(tag).trim()).filter(Boolean) : [];
   }
   get tags() {
-    return this._tags;
+    return this.#tags;
   }
   toJSON() {
     return {

@@ -4,15 +4,17 @@
         <script src="/js/audits.js" type="module" defer></script>
 {% endblock %}
 {% block content %}
-    <div>{{garbage}}</div>
-    <div data-urls="{{urls}}"></div>
-    <ul>
-    {% for url in urls %}
-        <li>
-            {{url}}
-        </li>
-    {% endfor %}
-    </ul>
+    <div>{{ auditsQueueId }} ###DEBUG</div>
+    <div id="audits" class="audit-container" data-audits data-audits-queue-id="{{ auditsQueueId }}">
+        <ul>
+        {% for url in urls %}
+            <li>
+                {{url}} ###DEBUG
+                <div>
+                    
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
-
-
